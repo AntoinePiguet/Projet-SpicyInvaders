@@ -36,7 +36,6 @@ namespace SpicyInvader2
 
             //Création des objets
             Ship ship = new Ship(PlAYER, Console.WindowWidth / 2, 25, ConsoleColor.Yellow);
-            //Enemy enemy1 = new Enemy(ALIEN, Console.WindowWidth / 2, 5);
             Enemy enemy2 = new Enemy(UFO, Console.WindowWidth / 3, 10, ConsoleColor.Red);
             Enemy[] enemies = new Enemy[enemyCount];
 
@@ -62,7 +61,7 @@ namespace SpicyInvader2
 
 
                 //Gère le déplacement + tir du vaisseau
-                ship.NextMove(tic);
+                ship.NextMove(tic, enemies);
 
                 //Gère le déplacement + tir de l'enemi
                 for (int i = 0; i < enemies.Length; i++)

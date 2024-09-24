@@ -1,0 +1,7 @@
+D:\320- PO\Projet-SpicyInvaders\SpicyInvaders\SpicyInvader2\bin\Debug\SpicyInvader2.exe.config
+D:\320- PO\Projet-SpicyInvaders\SpicyInvaders\SpicyInvader2\bin\Debug\SpicyInvader2.exe
+D:\320- PO\Projet-SpicyInvaders\SpicyInvaders\SpicyInvader2\bin\Debug\SpicyInvader2.pdb
+D:\320- PO\Projet-SpicyInvaders\SpicyInvaders\SpicyInvader2\obj\Debug\APT_SpicyInvader.csproj.AssemblyReference.cache
+D:\320- PO\Projet-SpicyInvaders\SpicyInvaders\SpicyInvader2\obj\Debug\APT_SpicyInvader.csproj.CoreCompileInputs.cache
+D:\320- PO\Projet-SpicyInvaders\SpicyInvaders\SpicyInvader2\obj\Debug\SpicyInvader2.exe
+D:\320- PO\Projet-SpicyInvaders\SpicyInvaders\SpicyInvader2\obj\Debug\SpicyInvader2.pdb

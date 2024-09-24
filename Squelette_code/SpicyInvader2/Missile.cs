@@ -18,7 +18,7 @@ namespace SpicyInvader2
         private int y;
 
         //image
-        private char sprite = '█';
+        private char sprite = '^';
 
         private int speed = 100;//vitesse entre 0 et MAX_SPEED
 
@@ -28,22 +28,23 @@ namespace SpicyInvader2
 
         /// <summary>
         /// Construit et affiche le missile
-
-        public Missile(int x, int y)
+        /// </summary>
+        /// <param name="initialX"></param>
+        /// <param name="initialY"></param>
+        public Missile(int initialX, int initialY)
         {
-            this.x = x;
-            this.y = y;
+            this.x = initialX;
+            this.y = initialY;
 
             Console.SetCursorPosition(x, y);
             Console.Write(sprite);
         }
-        
 
         /// <summary>
         /// Déplacement du missile
         /// </summary>
         /// <param name="tic"></param>
-        public void NextMove(int tic,Enemy[] ennemies)
+        public void NextMove(int tic)
         {
             if (speed == MAX_SPEED || tic % (MAX_SPEED - speed) == 0)
             {
@@ -60,10 +61,8 @@ namespace SpicyInvader2
                     destroyed = true;
                 }
             }
-            if(x < ALIEN.x + ennemies[0].Width && x + Width > Enemy.x && y < Enemy.y + Enemy.Height && y + Height > Enemy.y)
-            {
-                Ship.ship}.missile = destroyed;
-            }
         }
+
+
     }
 }

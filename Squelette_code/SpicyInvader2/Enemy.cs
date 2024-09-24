@@ -3,7 +3,6 @@
 //Lieu   : ETML
 //Descr. : Ennemi
 using System;
-using System.Security.Policy;
 
 namespace SpicyInvader2
 {
@@ -15,13 +14,12 @@ namespace SpicyInvader2
         const int MARGIN_LEFT = 10;
         const int MARGIN_RIGHT = 10;
 
-        private string[] sprite;
-        public ConsoleColor color;
-        public int x;
-        public int y;
+        private char sprite;
+        private int x;
+        private int y;
         private bool directionRight = true;
 
-        public int speed = 95;//Vitesse entre 0 et 100
+        private int speed = 95;//Vitesse entre 0 et 100
 
         /// <summary>
         /// Construit un objet ennemi
@@ -29,12 +27,11 @@ namespace SpicyInvader2
         /// <param name="sprite"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public Enemy(string[] sprite, int x, int y, ConsoleColor color)
+        public Enemy(char sprite, int x, int y)
         {
             this.x = x;
             this.y = y;
             this.sprite = sprite;
-            this.color = color;
         }
 
         /// <summary>
@@ -42,33 +39,15 @@ namespace SpicyInvader2
         /// </summary>
         public void Init()
         {
-
-            Draw();
+            Console.SetCursorPosition(x, y);
+            Console.Write(sprite);
         }
-
-        public void Draw()
-        {
-            var prev = Console.ForegroundColor;
-            Console.ForegroundColor = color;
-
-            for (int i = 0; i < sprite.Length; i++)
-            {
-                string line = sprite[i];
-                Console.SetCursorPosition(x, y + i);
-                Console.Write(line);
-            }
-
-
-            Console.ForegroundColor = prev;
-        }
-        
 
         /// <summary>
         /// Gère le mouvement+tir
         /// </summary>
         public void NextMove(int tic)
         {
-            
             //Éxécute l'action selon la vitesse
             if(tic%(100-speed)==0)
             {
@@ -88,12 +67,12 @@ namespace SpicyInvader2
                 if (newX > Console.WindowWidth - MARGIN_RIGHT || newX <= MARGIN_LEFT)
                 {
                     directionRight = !directionRight;//inverse la direction
-                    newY=newY+2;//descend verticalement
+                    newY++;//descend verticalement
 
                 }
 
                 //Déplace efficacement le vaisseau
-                Console.MoveBufferArea(x, y, sprite[0].Length, sprite.Length, newX, newY);
+                Console.MoveBufferArea(x, y, 1, 1, newX, newY);
 
                 //Mise à jour de la nouvelle position
                 x = newX;
