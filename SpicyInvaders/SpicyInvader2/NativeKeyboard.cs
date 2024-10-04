@@ -34,7 +34,9 @@ namespace SpicyInvader2
         /// </summary>
         Down,
 
-        Spacebar = 0x20
+        Spacebar = 0x20,
+
+        Enter
     }
 
     /// <summary>

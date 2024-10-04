@@ -3,14 +3,17 @@
 //Lieu   : ETML
 //Descr. : Ennemi
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Policy;
 
 namespace SpicyInvader2
 {
+
     /// <summary>
     /// Ennemi
     /// </summary>
-    class Enemy
+    public class Enemy
     {
         const int MARGIN_LEFT = 10;
         const int MARGIN_RIGHT = 10;
@@ -19,8 +22,9 @@ namespace SpicyInvader2
         public ConsoleColor color;
         public int x;
         public int y;
-        private bool directionRight = true;
-
+        public bool directionRight = true;
+        public int WIDTH = 9;
+        public int HEIGHT = 2;
         public int speed = 95;//Vitesse entre 0 et 100
 
         /// <summary>
@@ -29,12 +33,14 @@ namespace SpicyInvader2
         /// <param name="sprite"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public Enemy(string[] sprite, int x, int y, ConsoleColor color)
+        public Enemy(string[] sprite, int x, int y, ConsoleColor color, int width, int height)
         {
             this.x = x;
             this.y = y;
             this.sprite = sprite;
             this.color = color;
+            this.HEIGHT = height;
+            this.WIDTH = width;
         }
 
         /// <summary>
@@ -88,7 +94,7 @@ namespace SpicyInvader2
                 if (newX > Console.WindowWidth - MARGIN_RIGHT || newX <= MARGIN_LEFT)
                 {
                     directionRight = !directionRight;//inverse la direction
-                    newY=newY+2;//descend verticalement
+                    newY=newY+3;//descend verticalement
 
                 }
 
@@ -100,7 +106,30 @@ namespace SpicyInvader2
                 y = newY;
             }
 
+
         }
 
+        internal void Destroy(List<Enemy> ennemies)
+        {
+            var prev = Console.ForegroundColor;
+            Console.ForegroundColor = color;
+
+            for (int i = 0; i < sprite.Length; i++)
+            {
+                string line = sprite[i];
+                Console.SetCursorPosition(x, y + i);
+                Console.Write(new string(' ',line.Length));
+            }
+
+            Console.ForegroundColor = prev;
+            ennemies.Remove(this);
+
+
+        }
+
+        public bool CollidesWith(Enemy enemy)
+        {
+            return x + WIDTH > enemy.x && x + WIDTH < enemy.x + enemy.WIDTH && y == enemy.y;
+        }
     }
 }

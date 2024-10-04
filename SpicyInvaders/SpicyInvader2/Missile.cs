@@ -3,6 +3,7 @@
 //Lieu   : ETML
 //Descr. : Missile
 using System;
+using System.Collections.Generic;
 
 namespace SpicyInvader2
 {
@@ -19,6 +20,8 @@ namespace SpicyInvader2
 
         //image
         private char sprite = '█';
+        public const int WIDTH = 1;
+        public const int HEIGHT = 1;
 
         private int speed = 100;//vitesse entre 0 et MAX_SPEED
 
@@ -43,27 +46,42 @@ namespace SpicyInvader2
         /// Déplacement du missile
         /// </summary>
         /// <param name="tic"></param>
-        public void NextMove(int tic,Enemy[] ennemies)
+        public void NextMove(int tic,Enemy[] ennemies, Ship ship, List<Enemy> ennemiesList)
         {
             if (speed == MAX_SPEED || tic % (MAX_SPEED - speed) == 0)
             {
                 //Déplace le missile
-                if (y > 0)
+                if (y > 0 && !destroyed)
                 {
                     Console.MoveBufferArea(x, y, 1, 1, x, --y);
                 }
                 else
                 {
                     //efface le missile
-                    Console.SetCursorPosition(x, y);
-                    Console.Write(" ");
-                    destroyed = true;
+                    Destroy();
                 }
             }
-            if(x < ALIEN.x + ennemies[0].Width && x + Width > Enemy.x && y < Enemy.y + Enemy.Height && y + Height > Enemy.y)
+
+            int nombreDElements = ennemiesList.Count;
+
+            for (int i = 0; i < nombreDElements; i++)
+
             {
-                Ship.ship}.missile = destroyed;
+                if (x < ennemiesList[i].x + ennemiesList[i].WIDTH && x + WIDTH > ennemiesList[i].x && y < ennemiesList[i].y + ennemiesList[i].HEIGHT && y + HEIGHT > ennemiesList[i].y)
+                {
+                    ennemiesList[i].Destroy(ennemiesList);
+                    Destroy();
+                    break;
+                }
             }
+            
+        }
+
+        private void Destroy()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(" ");
+            destroyed = true;
         }
     }
 }

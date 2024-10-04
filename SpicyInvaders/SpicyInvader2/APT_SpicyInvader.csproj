@@ -8,10 +8,11 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>SpicyInvader2</RootNamespace>
     <AssemblyName>SpicyInvader2</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enemy.cs" />
+    <Compile Include="Kayou.cs" />
     <Compile Include="Missile.cs" />
     <Compile Include="NativeKeyboard.cs" />
     <Compile Include="Program.cs" />
