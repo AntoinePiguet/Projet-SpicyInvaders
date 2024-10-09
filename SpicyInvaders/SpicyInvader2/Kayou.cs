@@ -20,6 +20,7 @@ namespace SpicyInvader2
         public int HEIGHT = 1;
         public int speed = 95;//Vitesse entre 0 et 100
         public bool destroyed = false;
+        
 
         public Rock(string sprite, int x, int y, ConsoleColor color, int width, int height)
         {
@@ -64,7 +65,7 @@ namespace SpicyInvader2
                 }
 
                 //Descend d'une ligne s'il touche le bord
-                if (newX > Console.WindowWidth - MARGIN_RIGHT || newX <= MARGIN_LEFT)
+                if (newY > Console.WindowHeight || newY <= 0)
                 {
                     Destroy(rockList);
                     destroyed = true;
@@ -114,13 +115,12 @@ namespace SpicyInvader2
             Console.SetCursorPosition(x, y);
             Console.Write(new string (' ', sprite.Length));
             destroyed = true;
-            //rockList.Remove(this);
+            rockList.Remove(this);
 
-            /*var prev = Console.ForegroundColor;
-            Console.ForegroundColor = color;
-            Console.ForegroundColor = prev;*/
-
-
+        }
+        public bool CollidesWith(Rock rock)
+        {
+            return x + WIDTH > rock.x && x + WIDTH < rock.x + rock.WIDTH && y == rock.y;
         }
     }
 

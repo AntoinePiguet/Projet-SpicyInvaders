@@ -22,6 +22,7 @@ namespace SpicyInvader2
         public bool destroyed = false;
         public ConsoleColor color;
         public bool canné = false;
+        public int nmbAmmo = 3;
 
 
         //Dessin du vaisseau
@@ -101,9 +102,15 @@ namespace SpicyInvader2
                 //BARRE ESPACE
                 else if (NativeKeyboard.IsKeyDown(KeyCode.Spacebar))
                 {
-                    if (!IsMissileFired())
+                    if(nmbAmmo > 0) 
                     {
-                        missile = new Missile(x, y - 1);
+                        if (!IsMissileFired())
+                        {
+                            missile = new Missile(x, y - 1);
+                            nmbAmmo--;
+                            Console.SetCursorPosition(1, 0);
+                            Console.Write("Ammo : " + nmbAmmo);
+                        }
                     }
                 }
 

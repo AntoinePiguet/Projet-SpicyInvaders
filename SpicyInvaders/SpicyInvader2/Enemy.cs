@@ -26,6 +26,7 @@ namespace SpicyInvader2
         public int WIDTH = 9;
         public int HEIGHT = 2;
         public int speed = 95;//Vitesse entre 0 et 100
+        public bool destroyed = false;
 
         /// <summary>
         /// Construit un objet ennemi
@@ -72,7 +73,7 @@ namespace SpicyInvader2
         /// <summary>
         /// Gère le mouvement+tir
         /// </summary>
-        public void NextMove(int tic)
+        public void NextMove(int tic, List<Enemy> ennemiesList)
         {
             
             //Éxécute l'action selon la vitesse
@@ -96,6 +97,11 @@ namespace SpicyInvader2
                     directionRight = !directionRight;//inverse la direction
                     newY=newY+3;//descend verticalement
 
+                }
+                //Pour les tests plus tard, au cas ou il y a un ennemi qui avance en boucle sur y et pas sur x.
+                if( newY >= Console.WindowHeight)
+                {
+                    Destroy(ennemiesList);
                 }
 
                 //Déplace efficacement le vaisseau
@@ -123,6 +129,7 @@ namespace SpicyInvader2
 
             Console.ForegroundColor = prev;
             ennemies.Remove(this);
+            destroyed = true;
 
 
         }

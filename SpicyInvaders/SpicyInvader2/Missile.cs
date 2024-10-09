@@ -71,6 +71,7 @@ namespace SpicyInvader2
                 {
                     ennemiesList[i].Destroy(ennemiesList);
                     Destroy();
+                    
                     break;
                 }
             }

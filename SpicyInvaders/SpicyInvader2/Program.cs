@@ -5,6 +5,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
+using System.Security.Cryptography;
 using System.Threading;
 
 namespace SpicyInvader2
@@ -33,11 +35,17 @@ namespace SpicyInvader2
             float delay;
             int tic = 0;
             int tic2 = 0;
+            int tac = 0;
 
+
+            int copy = 0;
             int v = 0;
+            int b = 0;
             int score = 0;
             int enemyCount = 1000;
             double realFps;
+            int AMMO_X = 1;
+            int AMMO_Y = 0;
             string[] ALIEN = { "  ▄ ▄  ",
                                "▄▀███▀▄" };
             string[] UFO = { " ▄▄▄▄▄ ",
@@ -46,32 +54,21 @@ namespace SpicyInvader2
                                 "▄███▄",
                                 " ▀ ▀ " };
             string KAYOU = "████";
+            char bonusAmmo = '▄';
 
 
             List<Enemy> ennemiesList = new List<Enemy>();
             List<Rock> rockList = new List<Rock>();
+            List<Bonus> bonusList = new List<Bonus>();
 
             //Création des objets
             Ship ship = new Ship(PlAYER, Console.WindowWidth / 2, 25, ConsoleColor.Yellow);
+            //Bonus bonus = new Bonus(bonusAmmo, ConsoleColor.Cyan);
 
             Enemy[] enemies = new Enemy[enemyCount];
-            Enemy enemy = new Enemy(ALIEN, 0, 0, ConsoleColor.Blue, 7, 3);
-
+            Bonus[] bonusTab = new Bonus[1000];
             Rock[] rock = new Rock[1000];
 
-            /*for (int i = 0; i < enemyCount; i++)
-            {
-                if (i < enemyCount - 3)
-                {
-                    enemies[i] = new Enemy(ALIEN, (10 * (i + 1)), 4, ConsoleColor.Blue, 7, 3);
-                }
-                else
-                {
-                    enemies[i] = new Enemy(UFO, ((10 * i) - 10), 10, ConsoleColor.Red, 7, 3);
-                }
-                enemies[i].Init();
-                ennemiesList.Add(enemies[i]);
-            }*/
 
             //Affichage initial des objets
             ship.Init();
@@ -80,66 +77,61 @@ namespace SpicyInvader2
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
+            //affichage de l'ammo
+            Console.SetCursorPosition(AMMO_X, AMMO_Y);
+            Console.Write("Ammo : "+ ship.nmbAmmo);
 
             //boucle de jeu
             while (true)
             {
                 tic++; //FRAME
                 tic2++;
+
                 //Gère le déplacement + tir du vaisseau
                 ship.NextMove(tic, enemies, ennemiesList);
 
 
-                if (tic2 % 50 == 0)
+                if (tic2 % 100 == 0)
                 {
-                    int randomNumber = random.Next(1, Console.WindowWidth - 10);
-                    bool caseLibreTrouvee = false;
-
+                    
+                    int randomNumber = random.Next(10, Console.WindowWidth-14);
+                    
+                    while (true)
+                    {
+                        if (randomNumber + 7 > copy + tac && randomNumber < copy + tac)
+                        {
+                            randomNumber = random.Next(4, Console.WindowWidth);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        tac = 0;
+                    }
+                    copy = randomNumber;
+                    tac++;
+                    
+                    
                     var candidate = new Enemy(null, randomNumber, 4, ConsoleColor.Black, 9, 2);
-
                     foreach (var enemi in ennemiesList)
                     {
                         while (enemi.CollidesWith(candidate))
                         {
-                            randomNumber = random.Next(1, Console.WindowWidth - 10);
                             candidate = new Enemy(null, randomNumber, 4, ConsoleColor.Black, 9, 2);
                         }
                     }
                     
-                    /*
-                    do
-                    {
-                        int j = 0;
-                        for (int l = 0; l > ennemiesList.Count; l++)
-                        {
-                            //collision détectée
-                            if ((randomNumber + enemy.WIDTH > ennemiesList[j].x && randomNumber < ennemiesList[j].x + enemy.WIDTH) && ennemiesList[j].y == 4)
-                            {
-                                randomNumber = random.Next(1, Console.WindowWidth - 10);
-                                caseLibreTrouvee = false;
-                                break;//optimisation
-                            }
-                            else
-                            {
-                                caseLibreTrouvee = true;
-                            }
-                            j++;
-
-                        }
-                    } while (caseLibreTrouvee==false);
-                    */
-
-                    rock[v] = new Rock(KAYOU, randomNumber, 2, ConsoleColor.Green, 4, 1);
+                    rock[v] = new Rock(KAYOU, randomNumber, 1, ConsoleColor.Green, 4, 1);
                     rockList.Add(rock[v]);
-                    rockList[v].Init(randomNumber, 2);
+                    rockList[v].Init(randomNumber, 1);
 
-                    if(randomNumber < 20)
+                    if(v % 2 == 0)
                     {
-                        enemies[v] = new Enemy(UFO, randomNumber, 4, ConsoleColor.Red, 7, 3);
+                        enemies[v] = new Enemy(UFO, randomNumber, 7, ConsoleColor.Red, 9, 3);
                     }
                     else
                     {
-                        enemies[v] = new Enemy(ALIEN, randomNumber, 4, ConsoleColor.Blue, 7, 3);
+                        enemies[v] = new Enemy(ALIEN, randomNumber, 7, ConsoleColor.Blue, 9, 3);
                     }
                     enemies[v].Init();
                     ennemiesList.Add(enemies[v]);
@@ -149,11 +141,20 @@ namespace SpicyInvader2
                 }
 
 
+
                 //Gère le déplacement + tir de l'enemi
                 int nombreDElements = ennemiesList.Count;
                 for (int i = 0; i < nombreDElements; i++)
                 {
-                    ennemiesList[i].NextMove(tic);
+                    ennemiesList[i].NextMove(tic, ennemiesList);
+                    if (ennemiesList[i].destroyed == true)
+                    {
+                        
+                        bonusTab[b] = new Bonus(bonusAmmo, ConsoleColor.Cyan, bonusList);
+                        bonusList.Add(bonusTab[b]);
+                        bonusList[b].Init(ennemiesList[i].x, ennemiesList[i].y);
+                        b++;
+                    }
                 }
 
 
