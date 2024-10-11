@@ -17,7 +17,10 @@ namespace SpicyInvader2
     class Program
     {
         static Random random = new Random();
+
+        static int score = 0;
         
+
 
         public static void Main(string[] args)
         {
@@ -25,23 +28,21 @@ namespace SpicyInvader2
             Console.WindowHeight = 30;
 
 
-            //Prépare la console
+        //Prépare la console
 
-            //pour régler les FPS
-            int FPS_X = Console.WindowWidth - 10;
+        //pour régler les FPS
+        int FPS_X = Console.WindowWidth - 10;
             int FPS_Y = 0;
-            const float FPS = 25.0f;
-            const float MS_PER_FRAME = 1000 / FPS;
+            int SCORE_X = Console.WindowWidth - 10;
+            int score_Y = 1;
+            float FPS = 25.0f;
+            float MS_PER_FRAME = 1000 / FPS;
             float delay;
             int tic = 0;
             int tic2 = 0;
-            int tac = 0;
 
-
-            int copy = 0;
             int v = 0;
             int b = 0;
-            int score = 0;
             int enemyCount = 1000;
             double realFps;
             int AMMO_X = 1;
@@ -63,7 +64,6 @@ namespace SpicyInvader2
 
             //Création des objets
             Ship ship = new Ship(PlAYER, Console.WindowWidth / 2, 25, ConsoleColor.Yellow);
-            //Bonus bonus = new Bonus(bonusAmmo, ConsoleColor.Cyan);
 
             Enemy[] enemies = new Enemy[enemyCount];
             Bonus[] bonusTab = new Bonus[1000];
@@ -75,7 +75,8 @@ namespace SpicyInvader2
 
             //Pour régler les FPS
             Stopwatch sw = new Stopwatch();
-            sw.Start();
+            Stopwatch swTotal = new Stopwatch();
+            swTotal.Start();
 
             //affichage de l'ammo
             Console.SetCursorPosition(AMMO_X, AMMO_Y);
@@ -84,6 +85,7 @@ namespace SpicyInvader2
             //boucle de jeu
             while (true)
             {
+                sw.Restart();
                 tic++; //FRAME
                 tic2++;
 
@@ -91,47 +93,22 @@ namespace SpicyInvader2
                 ship.NextMove(tic, enemies, ennemiesList);
 
 
-                if (tic2 % 100 == 0)
+                if (tic2 % 50 == 0)
                 {
                     
-                    int randomNumber = random.Next(10, Console.WindowWidth-14);
-                    
-                    while (true)
-                    {
-                        if (randomNumber + 7 > copy + tac && randomNumber < copy + tac)
-                        {
-                            randomNumber = random.Next(4, Console.WindowWidth);
-                        }
-                        else
-                        {
-                            break;
-                        }
-                        tac = 0;
-                    }
-                    copy = randomNumber;
-                    tac++;
-                    
-                    
-                    var candidate = new Enemy(null, randomNumber, 4, ConsoleColor.Black, 9, 2);
-                    foreach (var enemi in ennemiesList)
-                    {
-                        while (enemi.CollidesWith(candidate))
-                        {
-                            candidate = new Enemy(null, randomNumber, 4, ConsoleColor.Black, 9, 2);
-                        }
-                    }
-                    
+                  int randomNumber = random.Next(1, Console.WindowWidth);
+
                     rock[v] = new Rock(KAYOU, randomNumber, 1, ConsoleColor.Green, 4, 1);
                     rockList.Add(rock[v]);
                     rockList[v].Init(randomNumber, 1);
 
                     if(v % 2 == 0)
                     {
-                        enemies[v] = new Enemy(UFO, randomNumber, 7, ConsoleColor.Red, 9, 3);
+                        enemies[v] = new Enemy(UFO, 0, 7, ConsoleColor.Red, 7, 3);
                     }
                     else
                     {
-                        enemies[v] = new Enemy(ALIEN, randomNumber, 7, ConsoleColor.Blue, 9, 3);
+                        enemies[v] = new Enemy(ALIEN, 0, 7, ConsoleColor.Blue, 7, 3);
                     }
                     enemies[v].Init();
                     ennemiesList.Add(enemies[v]);
@@ -154,6 +131,12 @@ namespace SpicyInvader2
                         bonusList.Add(bonusTab[b]);
                         bonusList[b].Init(ennemiesList[i].x, ennemiesList[i].y);
                         b++;
+                        score++;
+                        ennemiesList.Remove(ennemiesList[i]);
+                        i--;
+                        nombreDElements--;
+                        FPS+= 2.0f;
+                        
                     }
                 }
 
@@ -172,22 +155,27 @@ namespace SpicyInvader2
                     FinDuJeu(score, ship);
                     break;
                 }
-                 
+
                 //Calcl et affichage FPS
-                realFps = Convert.ToDouble(tic) / sw.Elapsed.TotalSeconds;
+                MS_PER_FRAME = 1000 / FPS;
+                delay = MS_PER_FRAME - sw.ElapsedMilliseconds;
+
+                realFps = Convert.ToDouble(tic +MS_PER_FRAME) / swTotal.Elapsed.TotalSeconds;
                 Console.SetCursorPosition(FPS_X, FPS_Y);
                 Console.WriteLine("FPS: {0,-10:#.00}", realFps);
 
+                Console.SetCursorPosition(SCORE_X,score_Y);
+                Console.WriteLine("Score : " + score);
+
 
                 //Délai éventuel pour ajuster les FPS
-                delay = tic * MS_PER_FRAME - sw.ElapsedMilliseconds;
+                
                 if (delay > 0)  
                 {
                     //Reset pour éviter un overflow
                     if (tic > int.MaxValue - 1)
                     {
                         tic = 0;
-                        sw.Restart();
                     }
                     Thread.Sleep(Convert.ToInt32(delay));//Ajustement au FPS
 

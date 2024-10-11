@@ -15,8 +15,8 @@ namespace SpicyInvader2
     /// </summary>
     public class Enemy
     {
-        const int MARGIN_LEFT = 10;
-        const int MARGIN_RIGHT = 10;
+        const int MARGIN_LEFT = 3;
+        const int MARGIN_RIGHT = 3;
 
         private string[] sprite;
         public ConsoleColor color;
@@ -27,7 +27,9 @@ namespace SpicyInvader2
         public int HEIGHT = 2;
         public int speed = 95;//Vitesse entre 0 et 100
         public bool destroyed = false;
+ 
 
+        
         /// <summary>
         /// Construit un objet ennemi
         /// </summary>
@@ -92,12 +94,13 @@ namespace SpicyInvader2
                 }
 
                 //Descend d'une ligne s'il touche le bord
-                if (newX > Console.WindowWidth - MARGIN_RIGHT || newX <= MARGIN_LEFT)
+                if (newX > Console.WindowWidth - MARGIN_RIGHT) // )
                 {
-                    directionRight = !directionRight;//inverse la direction
+                    newX = 0+MARGIN_LEFT;
                     newY=newY+3;//descend verticalement
 
                 }
+
                 //Pour les tests plus tard, au cas ou il y a un ennemi qui avance en boucle sur y et pas sur x.
                 if( newY >= Console.WindowHeight)
                 {
@@ -128,15 +131,15 @@ namespace SpicyInvader2
             }
 
             Console.ForegroundColor = prev;
-            ennemies.Remove(this);
+            
             destroyed = true;
 
 
         }
 
-        public bool CollidesWith(Enemy enemy)
+/*        public bool CollidesWith(Enemy enemy)
         {
             return x + WIDTH > enemy.x && x + WIDTH < enemy.x + enemy.WIDTH && y == enemy.y;
-        }
+        }*/
     }
 }

@@ -22,7 +22,7 @@ namespace SpicyInvader2
         public bool destroyed = false;
         public ConsoleColor color;
         public bool canné = false;
-        public int nmbAmmo = 3;
+        public int nmbAmmo = 30;
 
 
         //Dessin du vaisseau

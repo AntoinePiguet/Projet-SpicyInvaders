@@ -65,11 +65,6 @@ namespace SpicyInvader2
                 }
 
                 //Descend d'une ligne s'il touche le bord
-                if (newY > Console.WindowHeight || newY <= 0)
-                {
-                    Destroy(rockList);
-                    destroyed = true;
-                }
 
                 //Déplace efficacement le vaisseau
                 if (y > 0 && !destroyed)
@@ -114,8 +109,8 @@ namespace SpicyInvader2
             
             Console.SetCursorPosition(x, y);
             Console.Write(new string (' ', sprite.Length));
-            destroyed = true;
             rockList.Remove(this);
+            destroyed = true;
 
         }
         public bool CollidesWith(Rock rock)
