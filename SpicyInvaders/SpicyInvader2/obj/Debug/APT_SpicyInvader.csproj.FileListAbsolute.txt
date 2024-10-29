@@ -13,3 +13,10 @@ E:\320- PO\Projet-SpicyInvaders\SpicyInvaders\SpicyInvader2\obj\Debug\APT_SpicyI
 E:\320- PO\Projet-SpicyInvaders\SpicyInvaders\SpicyInvader2\obj\Debug\SpicyInvader2.exe
 E:\320- PO\Projet-SpicyInvaders\SpicyInvaders\SpicyInvader2\obj\Debug\SpicyInvader2.pdb
 E:\320- PO\Projet-SpicyInvaders\SpicyInvaders\SpicyInvader2\obj\Debug\APT_SpicyInvader.csproj.SuggestedBindingRedirects.cache
+C:\Users\pn01kbc\Desktop\Ruihihi\Projet-SpicyInvaders-main\SpicyInvaders\SpicyInvader2\bin\Debug\SpicyInvader2.exe.config
+C:\Users\pn01kbc\Desktop\Ruihihi\Projet-SpicyInvaders-main\SpicyInvaders\SpicyInvader2\bin\Debug\SpicyInvader2.exe
+C:\Users\pn01kbc\Desktop\Ruihihi\Projet-SpicyInvaders-main\SpicyInvaders\SpicyInvader2\bin\Debug\SpicyInvader2.pdb
+C:\Users\pn01kbc\Desktop\Ruihihi\Projet-SpicyInvaders-main\SpicyInvaders\SpicyInvader2\obj\Debug\APT_SpicyInvader.csproj.AssemblyReference.cache
+C:\Users\pn01kbc\Desktop\Ruihihi\Projet-SpicyInvaders-main\SpicyInvaders\SpicyInvader2\obj\Debug\APT_SpicyInvader.csproj.CoreCompileInputs.cache
+C:\Users\pn01kbc\Desktop\Ruihihi\Projet-SpicyInvaders-main\SpicyInvaders\SpicyInvader2\obj\Debug\SpicyInvader2.exe
+C:\Users\pn01kbc\Desktop\Ruihihi\Projet-SpicyInvaders-main\SpicyInvaders\SpicyInvader2\obj\Debug\SpicyInvader2.pdb

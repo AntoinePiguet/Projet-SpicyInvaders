@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{E82120DF-0FF2-41B4-9900-480D6D779AC7}|APT_SpicyInvader.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E82120DF-0FF2-41B4-9900-480D6D779AC7}|APT_SpicyInvader.csproj|d:\\320- po\\projet-spicyinvaders\\spicyinvaders\\spicyinvader2\\titre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E82120DF-0FF2-41B4-9900-480D6D779AC7}|APT_SpicyInvader.csproj|solutionrelative:titre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E82120DF-0FF2-41B4-9900-480D6D779AC7}|APT_SpicyInvader.csproj|D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\ship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E82120DF-0FF2-41B4-9900-480D6D779AC7}|APT_SpicyInvader.csproj|solutionrelative:ship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E82120DF-0FF2-41B4-9900-480D6D779AC7}|APT_SpicyInvader.csproj|D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\kayou.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E82120DF-0FF2-41B4-9900-480D6D779AC7}|APT_SpicyInvader.csproj|solutionrelative:kayou.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E82120DF-0FF2-41B4-9900-480D6D779AC7}|APT_SpicyInvader.csproj|D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E82120DF-0FF2-41B4-9900-480D6D779AC7}|APT_SpicyInvader.csproj|solutionrelative:enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E82120DF-0FF2-41B4-9900-480D6D779AC7}|APT_SpicyInvader.csproj|D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\ship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E82120DF-0FF2-41B4-9900-480D6D779AC7}|APT_SpicyInvader.csproj|solutionrelative:ship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E82120DF-0FF2-41B4-9900-480D6D779AC7}|APT_SpicyInvader.csproj|D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\bonus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,8 +38,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Titre.cs",
+              "DocumentMoniker": "D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\Titre.cs",
+              "RelativeDocumentMoniker": "Titre.cs",
+              "ToolTip": "D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\Titre.cs",
+              "RelativeToolTip": "Titre.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T09:48:33.197Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -44,14 +61,14 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAK0AAAAAAAAAAAAAALsAAAAJAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABoAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-27T11:25:14.083Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Kayou.cs",
               "DocumentMoniker": "D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\Kayou.cs",
               "RelativeDocumentMoniker": "Kayou.cs",
@@ -63,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Bonus.cs",
               "DocumentMoniker": "D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\Bonus.cs",
               "RelativeDocumentMoniker": "Bonus.cs",
@@ -75,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Ship.cs",
               "DocumentMoniker": "D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\Ship.cs",
               "RelativeDocumentMoniker": "Ship.cs",
@@ -83,11 +100,12 @@
               "RelativeToolTip": "Ship.cs",
               "ViewState": "AQIAAHkAAAAAAAAAAAAIwIkAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T11:22:31.556Z"
+              "WhenOpened": "2024-09-27T11:22:31.556Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Missile.cs",
               "DocumentMoniker": "D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\Missile.cs",
               "RelativeDocumentMoniker": "Missile.cs",
@@ -99,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Enemy.cs",
               "DocumentMoniker": "D:\\320- PO\\Projet-SpicyInvaders\\SpicyInvaders\\SpicyInvader2\\Enemy.cs",
               "RelativeDocumentMoniker": "Enemy.cs",

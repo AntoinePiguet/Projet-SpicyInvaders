@@ -19,11 +19,12 @@ namespace SpicyInvader2
         static Random random = new Random();
 
         static int score = 0;
-        
 
 
         public static void Main(string[] args)
         {
+            Titre.AfficherTitre();
+            Console.ReadLine();
             Console.WindowWidth = 50;
             Console.WindowHeight = 30;
 
